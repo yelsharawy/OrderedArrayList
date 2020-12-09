@@ -26,7 +26,7 @@ public class NoNullArrayList<E extends Comparable<E>> extends ArrayList<E> {
     }
 
 
-    private void checkValid(E e) {
+    protected void checkValid(E e) {
         if (e == null) {
             throw new IllegalArgumentException("cannot put null into NoNullArrayList");
         }

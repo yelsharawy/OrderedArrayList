@@ -17,6 +17,13 @@ public class OrderedArrayList<E extends Comparable<E>> extends NoNullArrayList<E
         add(element);
     }
 
+    public E set(int index, E element) {
+        checkValid(element);
+        E returnValue = remove(index);
+        add(element);
+        return returnValue;
+    }
+
 
     private int findInsertIndex(E element) {
         //* simple linear search
