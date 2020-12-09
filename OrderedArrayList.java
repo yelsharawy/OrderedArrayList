@@ -26,7 +26,7 @@ public class OrderedArrayList<E extends Comparable<E>> extends NoNullArrayList<E
 
 
     private int findInsertIndex(E element) {
-        //* simple linear search
+        /* simple linear search (adds to end of any "equal" elements)
         int size = size();
         for (int i = 0; i < size; i++) {
             if (get(i).compareTo(element) > 0) {
@@ -34,6 +34,22 @@ public class OrderedArrayList<E extends Comparable<E>> extends NoNullArrayList<E
             }
         }
         return size;
+        //*/
+        //* binary search
+        int left = 0;
+        int right = size() - 1;
+        while (right >= left) {
+            int middle = (left + right) / 2;
+            switch (get(middle).compareTo(element)) {
+                case 1:
+                    right = middle - 1;
+                    break;
+                case -1:
+                case 0:  // (ensures adding to the end of "equal" elements)
+                    left = middle + 1;
+            }
+        }
+        return left;
         //*/
     }
 
