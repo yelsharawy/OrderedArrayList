@@ -20,10 +20,15 @@ public class NoNullArrayList<E extends Comparable<E>> extends ArrayList<E> {
         super.add(index, element);
     }
 
+    public E set(int index, E element) {
+        checkValid(element);
+        return super.set(index, element);
+    }
+
 
     private void checkValid(E e) {
         if (e == null) {
-            throw new IllegalArgumentException("cannot add null to NoNullArrayList");
+            throw new IllegalArgumentException("cannot put null into NoNullArrayList");
         }
     }
 }
