@@ -6,6 +6,10 @@ public class NoNullArrayList<E extends Comparable<E>> extends ArrayList<E> {
         super();
     }
 
+    public NoNullArrayList(int initialCapacity) {
+        super(initialCapacity);
+    }
+
     public boolean add(E e) {
         checkValid(e);
         return super.add(e);
