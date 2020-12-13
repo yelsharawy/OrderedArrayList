@@ -9,6 +9,7 @@ public class OrderedArrayList<E extends Comparable<E>> extends NoNullArrayList<E
     }
 
     public boolean add(E e) {
+        checkValid(e);
         super.add(findInsertIndex(e), e);
         return true;
     }
